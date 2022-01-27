@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>AmpCar Soft</title>
+<link rel="stylesheet" type="text/css" href="static/css/index2.css"
+	th:href="@{/css/index2.css}">
+<link rel="stylesheet" type="text/css" href="static/css/index.css"
+	th:href="@{/css/index.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<nav> <a th:href="@{/mostrarEmpresas}">Empresas</a> <a
+		th:href="@{/wcoches}">Coches</a> <a th:href="@{/cliente}">Clientes</a>
+	<a th:href="@{/mostrarTrabajadores}">Trabajadores</a> <a
+		th:href="@{/wreparaciones}">Reparaciones</a> <a
+		th:href="@{/winformes}">Informes</a> </nav>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<div class="p-5 formu">
+		<form class="col-lg-6 offset-lg-4" th:action="@{insertarEmpresa}" th:object="${empresa}"
+			method="post">
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Cif</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{cif}" th:required="required" size="11" minlength="9" maxlength="9">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Nombre</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{nombre}" th:required="required" minlength="2">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Dirección</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{direccion}" th:required="required" minlength="8" maxlength="100">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Logo</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{logo}">
+				</div>
+			</div>
+			<div class="form-group row">
+					<input type="submit" value="Guardar" class="btn btn-outline-primary"> 				
+					<a th:href="@{/mostrarEmpresas}" class="btn btn-outline-danger">Cancelar</a>
+			</div>
+		</form>
+	</div>
+	<div align="center">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Cerrar Sesion" />
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>AmpCar Soft</title>
+<link rel="stylesheet" type="text/css" href="static/css/index2.css"
+	th:href="@{/css/index2.css}">
+<link rel="stylesheet" type="text/css" href="static/css/index.css"
+	th:href="@{/css/index.css}">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<nav> <a th:href="@{/mostrarEmpresas}">Empresas</a> <a
+		th:href="@{/wcoches}">Coches</a> <a th:href="@{/cliente}">Clientes</a>
+	<a th:href="@{/mostrarTrabajadores}">Trabajadores</a> <a
+		th:href="@{/wreparaciones}">Reparaciones</a> <a
+		th:href="@{/winformes}">Informes</a> </nav>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+	<div class="p-5 formu">
+		<form class="col-lg-6 offset-lg-4" th:action="@{insertarCoche}"
+			th:object="${coche}" method="post">
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Matricula</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{matricula}" th:required="required" minlength="4" maxlength="15">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Marca</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{marca}" th:required="required" minlength="2" maxlength="25">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Modelo</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{modelo}" th:required="required">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Potencia</label>
+				<div class="col-sm-10">
+					<input type="number" th:field="*{potencia}" th:required="required" min="50">
+				</div>
+			</div>
+			<div class="form-group row justify-content-center">
+				<label class="col-sm-2 col-form-label">Cliente</label>
+				<div class="col-sm-10">
+					<input type="text" th:field="*{cliente.id}" th:required="required">
+				
+					<!-- <select th:field="*{cliente.id}">
+						<option th:each="cliente: ${listadoClientesCoche}" th:value="${cliente}"
+							th:text="#{${cliente}}" />
+					</select> -->
+				</div>
+			</div>
+			<div class="form-group row">
+				<input type="submit" value="Guardar" class="btn btn-outline-primary">
+				<a th:href="@{/wcoches}" class="btn btn-outline-danger">Cancelar</a>
+			</div>
+		</form>
+	</div>
+	<div align="center">
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Cerrar Sesion" />
+		</form>
+	</div>
+</body>
+</html>
